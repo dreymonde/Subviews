@@ -6,6 +6,8 @@
   <img src="Media/donate.png" height="70">
 </a>
 
+---
+
 **Subviews** is a lightweight package built on top of **UIKit** that provides a new way of writing custom view subclasses with less boilerplate and more clarity.
 
 In short, it transforms all this code:
@@ -43,17 +45,15 @@ Into this:
 import Subviews
 
 final class HelloWorldView: Superview {
-    
     @Subview(.pin, {
         $0.text = "Hello, UIKit 2023"
     })
     var label = UILabel()
-    
 }
 ```
 
-> **Note**
-> 🇺🇦 Help save Ukraine. [Donate via United24](https://u24.gov.ua), the official fundraising platform by the President of Ukraine
+> **Note**<br>
+> Help save Ukraine. [Donate via United24](https://u24.gov.ua), the official fundraising platform by the President of Ukraine
 
 [![United24](Media/united24.jpg)](https://u24.gov.ua)
 
@@ -180,7 +180,7 @@ final class EmptyStateVC: ParentViewController {
 
 First of all, you should always use `Superview` (or your own class that inherits from `Superview`) as a base class of your custom UIView's (and `ParentViewController` for your custom view controllers). This will ensure that all `@Subview` and `@Child` properties are added properly.
 
-> **Note**
+> **Note**<br>
 > If you don't want to change your base classes, see [Using `@Subview` without subclassing `Superview`](#using-subview-without-subclassing-superview)
 
 ```swift
@@ -435,7 +435,7 @@ final class UkraineFlag: Superview {
 
 ![Ukraine](Media/ukraine1.png)
 
-> **Warning**
+> **Warning**<br>
 > Make sure you're using `@ArrangedSubview` with stack views, not `@Subview`!
 
 `@ArrangedSubview` supports quick layout options, configuration blocks and dynamic creation blocks, same as `@Subview`:
@@ -473,7 +473,7 @@ let bravery = FlaggedLogo(title: "BRAVERY")
 
 ### _[Experimental]_ Using `HorizontalStack` / `VerticalStack`
 
-> **Warning**
+> **Warning**<br>
 > This feature is experimental and might be changed or removed in future versions (with notice). If you want to help **Subviews**, please try it out and I'm excited to see your feedback!
 
 If you don't want to use `@ArrangedSubview`, you can opt in for experimental `_HorizontalStack` / `_VerticalStack` functions that takes a `self`-specified result builder:
