@@ -10,6 +10,11 @@ final class ViewA: AutoSuperview {
     
     @Subview(.pin)
     var button = { (self) in UILabel() }
+    
+    @Subview(.pin, {
+        $0.axis = .horizontal
+    })
+    var stack = UIStackView()
 }
 
 final class BoldLabel: AutoSuperview {

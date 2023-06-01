@@ -306,19 +306,41 @@ public struct AnyArrangedSubview<EnclosingSelf: AddsSubviews, Superview: UIStack
     public init(
         wrappedValue: View,
         of superview: @escaping (EnclosingSelf) -> Superview,
+        _ viewLayoutOptions: ViewLayoutOption,
         _ configure: @escaping (View, EnclosingSelf) -> () = { _,_ in }
     ) {
         self.creatable = Creatable(wrappedValue)
         self.resolveSuperview = superview
-        self.configure = configure
+        self.configure = { val, encl in
+            viewLayoutOptions.layout(val)
+            configure(val, encl)
+        }
+    }
+    
+    @_disfavoredOverload
+    public init(
+        wrappedValue: View,
+        of superview: @escaping (EnclosingSelf) -> Superview,
+        _ configure: @escaping (View, EnclosingSelf) -> () = { _,_ in }
+    ) {
+        self.init(wrappedValue: wrappedValue, of: superview, [], configure)
     }
     
     public init(
         wrappedValue: View,
         of superview: @escaping (EnclosingSelf) -> Superview,
-        _ configure: @escaping (View) -> () = { _ in }
+        _ viewLayoutOptions: ViewLayoutOption,
+        _ configure: @escaping (View) -> ()
     ) {
-        self.init(wrappedValue: wrappedValue, of: superview, { val,_ in configure(val) })
+        self.init(wrappedValue: wrappedValue, of: superview, viewLayoutOptions, { val,_ in configure(val) })
+    }
+    
+    public init(
+        wrappedValue: View,
+        of superview: @escaping (EnclosingSelf) -> Superview,
+        _ configure: @escaping (View) -> ()
+    ) {
+        self.init(wrappedValue: wrappedValue, of: superview, [], configure)
     }
     
     // MARK: `nil` / unresolved inits
@@ -327,19 +349,41 @@ public struct AnyArrangedSubview<EnclosingSelf: AddsSubviews, Superview: UIStack
     public init(
         wrappedValue: ((EnclosingSelf) -> View)? = nil,
         of superview: @escaping (EnclosingSelf) -> Superview,
+        _ viewLayoutOptions: ViewLayoutOption,
         _ configure: @escaping (View, EnclosingSelf) -> () = { _,_ in }
     ) {
         self.creatable = Creatable(create: wrappedValue)
         self.resolveSuperview = superview
-        self.configure = configure
+        self.configure = { val, encl in
+            viewLayoutOptions.layout(val)
+            configure(val, encl)
+        }
+    }
+    
+    @_disfavoredOverload
+    public init(
+        wrappedValue: ((EnclosingSelf) -> View)? = nil,
+        of superview: @escaping (EnclosingSelf) -> Superview,
+        _ configure: @escaping (View, EnclosingSelf) -> () = { _,_ in }
+    ) {
+        self.init(wrappedValue: wrappedValue, of: superview, [], configure)
     }
     
     public init(
         wrappedValue: ((EnclosingSelf) -> View)? = nil,
         of superview: @escaping (EnclosingSelf) -> Superview,
-        _ configure: @escaping (View) -> () = { _ in }
+        _ viewLayoutOptions: ViewLayoutOption,
+        _ configure: @escaping (View) -> ()
     ) {
-        self.init(wrappedValue: wrappedValue, of: superview, { val,_ in configure(val) })
+        self.init(wrappedValue: wrappedValue, of: superview, viewLayoutOptions, { val,_ in configure(val) })
+    }
+    
+    public init(
+        wrappedValue: ((EnclosingSelf) -> View)? = nil,
+        of superview: @escaping (EnclosingSelf) -> Superview,
+        _ configure: @escaping (View) -> ()
+    ) {
+        self.init(wrappedValue: wrappedValue, of: superview, [], configure)
     }
 }
 

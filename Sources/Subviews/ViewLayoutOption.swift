@@ -40,6 +40,15 @@ public struct ViewLayoutOption: ExpressibleByArrayLiteral {
         }
     }
     
+    public static func withSuperview(_ layout: @escaping (UIView, _ superview: UIView) -> Void) -> ViewLayoutOption {
+        ViewLayoutOption {
+            guard let superview = $0.superview else {
+                return
+            }
+            layout($0, superview)
+        }
+    }
+    
     public typealias ArrayLiteralElement = ViewLayoutOption
     
     public var layout: (UIView) -> ()
@@ -89,6 +98,23 @@ public struct ViewLayoutOption: ExpressibleByArrayLiteral {
     }
     public static var aspectRatioSquare: ViewLayoutOption {
         .aspectRatio(1)
+    }
+    
+    public static func relativeSize(_ relativeSize: CGSize) -> ViewLayoutOption {
+        .withSuperview {
+            $0.anchors.height.equal($1.anchors.height.multiplied(by: relativeSize.height))
+            $0.anchors.width.equal($1.anchors.width.multiplied(by: relativeSize.width))
+        }
+    }
+    public static func relativeHeight(_ relativeHeight: CGFloat) -> ViewLayoutOption {
+        .withSuperview { view, superview in
+            view.anchors.height.equal(superview.anchors.height.multiplied(by: relativeHeight))
+        }
+    }
+    public static func relativeWidth(_ relativeWidth: CGFloat) -> ViewLayoutOption {
+        .withSuperview { view, superview in
+            view.anchors.width.equal(superview.anchors.width.multiplied(by: relativeWidth))
+        }
     }
     
     // MARK: Pin
