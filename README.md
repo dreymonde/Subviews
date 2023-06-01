@@ -738,8 +738,6 @@ All reflection-related code is stable and official. No funny business.
 
 A: **Subviews** _is_ 100% UIKit & Auto Layout. You can put your own UIKit code anywhere.
 
-### Q: 
-
 ### Q: Does this work with AppKit?
 
 A: Not yet. Let me know if that's something you are interested in.
