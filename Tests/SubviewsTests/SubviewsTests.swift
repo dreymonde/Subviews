@@ -2,7 +2,7 @@ import XCTest
 @testable import Subviews
 import UIKit
 
-final class ViewA: AutoSuperview {
+final class ViewA: Superview {
     let title = "Aaaa"
     
     @Subview(.pin)
@@ -17,7 +17,7 @@ final class ViewA: AutoSuperview {
     var stack = UIStackView()
 }
 
-final class BoldLabel: AutoSuperview {
+final class BoldLabel: Superview {
     let boldText: String
     
     init(boldText: String) {
@@ -31,7 +31,7 @@ final class BoldLabel: AutoSuperview {
     private var label = UILabel()
 }
 
-final class BoldStack: AutoSuperview {
+final class BoldStack: Superview {
     let line1: String
     let line2: String
     

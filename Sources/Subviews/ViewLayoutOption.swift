@@ -353,3 +353,84 @@ extension UIEdgeInsets {
         self.init(vertical: .zero, horizontal: horizontal)
     }
 }
+
+/*
+ 
+// Center:
+.alignCenter(offset:)
+.alignCenterX(offset:)
+.alignCenterY(offset:)
+ 
+// Size:
+.size(_ size:)
+.height(_ height:)
+.width(_ width:)
+.aspectRatio(_ widthToHeight:)
+.aspectRatioSquare
+.relativeSize(_ relativeSize:)
+.relativeHeight(_ relativeHeight:)
+.relativeWidth(_ relativeWidth:)
+ 
+// Edges Pin:
+.pin(insets:)
+.pin(inset:)
+.pinHorizontally(insets:)
+.pinVertically(insets:)
+.pinBottom(inset:)
+.pinTop(inset:)
+.pinLeading(inset:)
+.pinTrailing(inset:)
+ 
+// Margins Pin:
+.marginsPin(insets:)
+.marginsPin(inset:)
+.marginsPinHorizontally(insets:)
+.marginsPinVertically(insets:)
+.marginsPinBottom(inset:)
+.marginsPinTop(inset:)
+.marginsPinLeading(inset:)
+.marginsPinTrailing(inset:)
+ 
+// Safe Area Pin:
+.safeAreaPin(insets:)
+.safeAreaPin(inset:)
+.safeAreaPinHorizontally(insets:)
+.safeAreaPinVertically(insets:)
+.safeAreaPinBottom(inset:)
+.safeAreaPinTop(inset:)
+.safeAreaPinLeading(inset:)
+.safeAreaPinTrailing(inset:)
+ 
+// Readable Content Guide Pin:
+.readableContentPin(insets:)
+.readableContentPin(inset:)
+.readableContentPinHorizontally(insets:)
+.readableContentPinVertically(insets:)
+.readableContentPinBottom(inset:)
+.readableContentPinTop(inset:)
+.readableContentPinLeading(inset:)
+.readableContentPinTrailing(inset:)
+
+extension ViewLayoutOption {
+    static func halfHeight() -> ViewLayoutOption {
+        ViewLayoutOption { view in
+            guard let superview = view.superview else {
+                return
+            }
+            
+            NSLayoutConstraint.activate([
+                view.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 0.5)
+            ])
+        }
+    }
+    
+    static func halfWidth() -> ViewLayoutOption {
+        ViewLayoutOption.withSuperview { view, superview in
+            NSLayoutConstraint.activate([
+                view.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 0.5)
+            ])
+        }
+    }
+}
+ 
+*/

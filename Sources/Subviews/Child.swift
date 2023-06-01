@@ -75,6 +75,11 @@ public struct AnyChild<EnclosingSelf: AddsChildrenViewControllers & UIViewContro
       set { fatalError("called wrappedValue setter") }
     }
     
+    public var projectedValue: Self {
+        get { self }
+        set { self = newValue }
+    }
+    
     private let resolveSuperview: (EnclosingSelf) -> Superview
     private let configure: (ViewController, EnclosingSelf) -> ()
     public let onReplace: ChildReplaceBehavior

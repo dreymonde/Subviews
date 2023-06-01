@@ -1,8 +1,6 @@
 import UIKit
 
-public typealias Superview = AutoSuperview
-
-open class AutoSuperview: UIView, AddsSubviews {
+open class Superview: UIView, AddsSubviews {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.resolveSubviews()
