@@ -113,7 +113,7 @@ final class EmojiLogoView: Superview {
 let republicOfBoba = EmojiLogoView(republicName: "REPUBLIC OF BOBA", republicEmoji: "🧋")
 ```
 
-<img src="Media/boba1.png" height="200">
+<img src="Media/boba1.png" width="300">
 
 Even more advanced example featuring more quick layout options and dynamic view creation using `self`:
 
@@ -150,7 +150,7 @@ final class BestFlagView: Superview {
 let bestFlag = BestFlagView(republicName: "CALIFORNIA BURRITO", republicEmoji: "🌯")
 ```
 
-<img src="Media/california1.png" height="200">
+<img src="Media/california1.png" width="300">
 
 Also works with view controllers:
 
@@ -240,7 +240,7 @@ final class GreenFlagView: Superview {
 }
 ```
 
-<img src="Media/greenflag1.png" height="200">
+<img src="Media/greenflag1.png" width="300">
 
 List of all available quick layout options (`ViewLayoutOption` struct):
 
@@ -359,7 +359,7 @@ final class BobaLabel: Superview {
 }
 ```
 
-<img src="Media/boba2.png" height="200">
+<img src="Media/boba2.png" width="300">
 
 And second, it allows you to "inject" the properties of your custom class into subviews easily, without needing any additional functions:
 
@@ -435,7 +435,7 @@ final class UkraineFlag: Superview {
 }
 ```
 
-<img src="Media/ukraine1.png" height="200">
+<img src="Media/ukraine1.png" width="300">
 
 > **Warning**<br>
 > Make sure you're using `@ArrangedSubview` with stack views, not `@Subview`!
@@ -471,7 +471,7 @@ final class FlaggedLogo: Superview {
 let bravery = FlaggedLogo(title: "BRAVERY")
 ```
 
-<img src="Media/ukraine2.png" height="200">
+<img src="Media/ukraine2.png" width="300">
 
 ### _[Experimental]_ Using `HorizontalStack` / `VerticalStack`
 
