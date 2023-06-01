@@ -55,7 +55,9 @@ final class HelloWorldView: Superview {
 > **Note**<br>
 > Help save Ukraine. [Donate via United24](https://u24.gov.ua), the official fundraising platform by the President of Ukraine
 
-[![United24](Media/united24.jpg)](https://u24.gov.ua)
+<a href="https://u24.gov.ua">
+  <img src="Media/united24.jpg" width="75%" height="75%">
+</a>
 
 ## Showcase
 
@@ -111,7 +113,7 @@ final class EmojiLogoView: Superview {
 let republicOfBoba = EmojiLogoView(republicName: "REPUBLIC OF BOBA", republicEmoji: "🧋")
 ```
 
-![boba-1](Media/boba1.png)
+<img src="Media/boba1.png" height="200">
 
 Even more advanced example featuring more quick layout options and dynamic view creation using `self`:
 
@@ -148,7 +150,7 @@ final class BestFlagView: Superview {
 let bestFlag = BestFlagView(republicName: "CALIFORNIA BURRITO", republicEmoji: "🌯")
 ```
 
-![california](Media/california1.png)
+<img src="Media/california1.png" height="200">
 
 Also works with view controllers:
 
@@ -238,7 +240,7 @@ final class GreenFlagView: Superview {
 }
 ```
 
-![green-flag](Media/greenflag1.png)
+<img src="Media/greenflag1.png" height="200">
 
 List of all available quick layout options (`ViewLayoutOption` struct):
 
@@ -357,7 +359,7 @@ final class BobaLabel: Superview {
 }
 ```
 
-![boba](Media/boba2.png)
+<img src="Media/boba2.png" height="200">
 
 And second, it allows you to "inject" the properties of your custom class into subviews easily, without needing any additional functions:
 
@@ -433,7 +435,7 @@ final class UkraineFlag: Superview {
 }
 ```
 
-![Ukraine](Media/ukraine1.png)
+<img src="Media/ukraine1.png" height="200">
 
 > **Warning**<br>
 > Make sure you're using `@ArrangedSubview` with stack views, not `@Subview`!
@@ -469,7 +471,7 @@ final class FlaggedLogo: Superview {
 let bravery = FlaggedLogo(title: "BRAVERY")
 ```
 
-![Ukraine](Media/ukraine2.png)
+<img src="Media/ukraine2.png" height="200">
 
 ### _[Experimental]_ Using `HorizontalStack` / `VerticalStack`
 
@@ -744,6 +746,4 @@ A: Not yet. Let me know if that's something you are interested in.
 
 ### Q: How can I help?
 
-A: [Donate to Ukraine](https://u24.gov.ua)
-
-[![United24](Media/united24.jpg)](https://u24.gov.ua)
+A: [Donate to Ukraine](https://u24.gov.ua). Thank you
