@@ -65,12 +65,10 @@ Simplest view with quick layout options:
 
 ```swift
 final class EmptyStateView: Superview {
-
     @Subview([.alignCenterX, .alignCenterY(offset: -10)], {
         $0.text = "This list is empty"
     })
     var label = UILabel()
-    
 }
 ```
 
@@ -80,12 +78,6 @@ More advanced example using stack views and dynamic view configuration with `sel
 final class EmojiLogoView: Superview {
     let republicName: String
     let republicEmoji: String
-    
-    init(republicName: String, republicEmoji: String) {
-        self.republicName = republicName
-        self.republicEmoji = republicEmoji
-        super.init()
-    }
     
     @Subview(.pin, {
         $0.axis = .vertical
@@ -121,12 +113,6 @@ Even more advanced example featuring more quick layout options and dynamic view 
 final class BestFlagView: Superview {
     let republicName: String
     let republicEmoji: String
-    
-    init(republicName: String, republicEmoji: String) {
-        self.republicName = republicName
-        self.republicEmoji = republicEmoji
-        super.init()
-    }
     
     @Subview([.pinTop, .pinHorizontally, .relativeHeight(0.8)], {
         $0.backgroundColor = .white
@@ -223,12 +209,6 @@ final class CustomView: Superview {
 **Subviews** provides a lot of convenient easy to use layout modifiers. All of them are 100% UIKit and based on Auto Layout:
 
 ```swift
-func RectangleView(color: UIColor) -> UIView {
-    let view = UIView()
-    view.backgroundColor = color
-    return view
-}
-
 final class GreenFlagView: Superview {
     @Subview([
         .marginsPinHorizontally,
@@ -367,11 +347,6 @@ And second, it allows you to "inject" the properties of your custom class into s
 final class ErrorLabel: Superview {
     let error: Error
     
-    init(error: Error) {
-        self.error = error
-        super.init()
-    }
-    
     // parentheses around (label, self) are required by Swift
     @Subview(.pin, { (label, self) in
         label.text = self.error.localizedDescription
@@ -398,14 +373,8 @@ final class SymbolLabel: Superview {
         let image = UIImage(systemName: self.systemSymbolName)
         return UIImageView(image: image)
     }
-    
-    init(systemSymbolName: String) {
-        self.systemSymbolName = systemSymbolName
-        super.init()
-    }
 }
 
-// 􁜫
 let volleyball = SymbolLabel(systemSymbolName: "volleyball.fill")
 ```
 
@@ -446,11 +415,6 @@ final class UkraineFlag: Superview {
 final class FlaggedLogo: Superview {
     let title: String
     
-    init(title: String) {
-        self.title = title
-        super.init()
-    }
-    
     @Subview(.pin, {
         $0.axis = .horizontal
         $0.alignment = .center
@@ -481,12 +445,6 @@ let bravery = FlaggedLogo(title: "BRAVERY")
 If you don't want to use `@ArrangedSubview`, you can opt in for experimental `_HorizontalStack` / `_VerticalStack` functions that takes a `self`-specified result builder:
 
 ```swift
-func RectangleView(color: UIColor) -> UIView {
-    let view = UIView()
-    view.backgroundColor = color
-    return view
-}
-
 final class PeruFlag: Superview {
     let leftStripe = RectangleView(color: .red)
     let centerStripe = RectangleView(color: .white)
@@ -525,12 +483,6 @@ final class TwoColorVerticalFlag: Superview {
         self.topStripe
         self.bottomStripe
     }
-    
-    init(topColor: UIColor, bottomColor: UIColor) {
-        self.topColor = topColor
-        self.bottomColor = bottomColor
-        super.init()
-    }
 }
 
 let ukraineFlag = TwoColorVerticalFlag(topColor: .systemBlue, bottomColor: .systemYellow)
@@ -550,12 +502,6 @@ final class TwoColorVerticalFlag: Superview {
     var flagStack = _VerticalStack { (self) in
         RectangleView(color: self.topColor)
         RectangleView(color: self.bottomColor)
-    }
-    
-    init(topColor: UIColor, bottomColor: UIColor) {
-        self.topColor = topColor
-        self.bottomColor = bottomColor
-        super.init()
     }
 }
 ```
@@ -692,6 +638,7 @@ final class EmptyStateVC: UIViewController, AddsChildrenViewControllers, AddsSub
 - [x] _Experimental_: `_VerticalStack` / `_HorizontalStack`
 - [x] Using `@Subview` / `@Child` without `Superview` / `ParentViewController`
 - [ ] `@Subview` / `@Child`: replacement behavior (`onReplace:`)
+- [ ] `@Subview` / `@Child`: deferred initialization
 - [ ] Writing custom `Enclosed` types
 - [ ] Writing custom `ViewLayoutOption` (quick layout options)
 
