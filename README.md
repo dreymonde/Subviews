@@ -9,7 +9,7 @@
 ---
 
 > **Note**<br>
-> **Subviews** uses **property wrappers**, not macros, so it supports all Swift versions since Swift 5.5. That said, will it be updated to use macros for better performance eventually? Highly likely
+> **Subviews** uses **property wrappers**, not macros, so it supports all Swift versions since Swift 5.5
 
 **Subviews** is a lightweight package built on top of **UIKit** that provides a new way of writing custom view subclasses with less boilerplate and more clarity.
 
