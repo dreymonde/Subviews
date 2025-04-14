@@ -13,7 +13,22 @@
 
 **Subviews** is a lightweight package built on top of **UIKit** that provides a new way of writing custom view subclasses with less boilerplate and more clarity.
 
-In short, it transforms all this code:
+In short, it allows you to write only this:
+
+```swift
+import Subviews
+
+final class HelloWorldView: Superview {
+    @Subview(.pin, {
+        $0.text = "Hello, UIKit 2023"
+    })
+    var label = UILabel()
+}
+```
+
+<details>
+
+<summary>Instead of all this</summary>
 
 ```swift
 final class HelloWorldView: UIView {
@@ -42,18 +57,7 @@ final class HelloWorldView: UIView {
 }
 ```
 
-Into this:
-
-```swift
-import Subviews
-
-final class HelloWorldView: Superview {
-    @Subview(.pin, {
-        $0.text = "Hello, UIKit 2023"
-    })
-    var label = UILabel()
-}
-```
+</details>
 
 > **Note**<br>
 > Help save Ukraine. [Donate via United24](https://u24.gov.ua), the official fundraising platform by the President of Ukraine
