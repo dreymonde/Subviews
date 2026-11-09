@@ -89,6 +89,10 @@ public enum StackBuilder {
         expression.map({ [$0] }) ?? []
     }
 
+    public static func buildExpression(_ expression: [Expression]) -> Component {
+        expression
+    }
+
     public static func buildBlock(_ children: Component...) -> Component {
         children.flatMap({ $0 })
     }
@@ -107,5 +111,13 @@ public enum StackBuilder {
 
     public static func buildEither(second child: Component) -> Component {
         child
+    }
+
+    public static func buildArray(_ components: [Component]) -> Component {
+        components.flatMap({ $0 })
+    }
+
+    public static func buildLimitedAvailability(_ component: Component) -> Component {
+        component
     }
 }

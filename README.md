@@ -496,6 +496,30 @@ let ukraineFlag = TwoColorVerticalFlag(topColor: .systemBlue, bottomColor: .syst
 let polandFlag = TwoColorVerticalFlag(topColor: .white, bottomColor: .red)
 ```
 
+When the number of views is only known at runtime, use a `for` loop, or pass an array of views directly:
+
+```swift
+final class StripedFlag: Superview {
+    let title = UILabel()
+    let stripes: [RectangleView]
+    
+    init(colors: [UIColor]) {
+        self.stripes = colors.map({ RectangleView(color: $0) })
+        super.init()
+    }
+    
+    @Subview(.pin)
+    var flagStack = _VerticalStack { (self) in
+        self.title
+        for stripe in self.stripes {
+            stripe
+        }
+        // or simply:
+        // self.stripes
+    }
+}
+```
+
 Or you can get suspiciously close to SwiftUI by defining your subviews inside the stack block itself:
 
 ```swift
